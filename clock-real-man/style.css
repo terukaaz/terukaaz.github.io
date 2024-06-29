@@ -1,0 +1,45 @@
+@font-face {
+    font-family: noto_mono;
+    src: url(fonts/generic.ttf);
+}
+
+div {
+    font-family: noto_mono, ui-monospace;
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+.time-list {
+    font-size: large;
+    text-align: left;
+    position: absolute;
+    bottom: 50%;
+    left: 16px;
+
+    white-space: pre;
+
+}
+
+.timer {
+    font-size: x-large;
+    text-align: left;
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+}
+
+.scramble {
+    font-size: xxx-large;
+    text-align: center;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 650px;
+}

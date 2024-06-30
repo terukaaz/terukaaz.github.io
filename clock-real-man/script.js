@@ -51,18 +51,19 @@ function onKey(event) {
 
             if (solveIndex % 2 === 0) {
 
-                times.push(Date.now() - currentSolveTimeStarted);
+                currentSolveTimeStarted = Date.now();
 
                 document.getElementsByClassName("scramble")[0].style.textAlign = "center";
                 document.getElementsByClassName("scramble")[0].innerHTML = "Solve.";
 
-                document.getElementsByClassName("time-list")[0].innerHTML = times.map(element => `${new Date(element).toISOString().slice(14, 22).toString()}`).join("\n").toString();
             } else {
 
-                currentSolveTimeStarted = Date.now();
+                times.push(Date.now() - currentSolveTimeStarted);
 
                 document.getElementsByClassName("scramble")[0].style.textAlign = "left";
                 document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(simulScramble);
+
+                document.getElementsByClassName("time-list")[0].innerHTML = times.map(element => `${new Date(element).toISOString().slice(14, 22).toString()}`).join("\n").toString();
             }
 
             solveIndex++;
@@ -76,8 +77,6 @@ function onKey(event) {
         } else if (timerState === 0) {
 
             startTimer();
-
-            currentSolveTimeStarted = Date.now();
 
             document.getElementsByClassName("scramble")[0].style.textAlign = "left";
             document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(simulScramble);

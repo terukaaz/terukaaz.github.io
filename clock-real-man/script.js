@@ -67,7 +67,7 @@ function onKey(event) {
 
             solveIndex++;
 
-            if (solveIndex >= 9) {
+            if (solveIndex >= 10) {
                 stopTimer();
                 document.getElementsByClassName("scramble")[0].style.textAlign = "center";
                 document.getElementsByClassName("scramble")[0].innerHTML = `You've finished ao5 in ${new Date(time).toISOString().slice(14, 22)}!`

@@ -3,13 +3,10 @@
     src: url(fonts/generic.ttf);
 }
 
-div {
-    font-family: noto_mono, ui-monospace;
-    color: white;
-}
-
 body {
     background-color: black;
+    font-family: noto_mono, ui-monospace;
+    color: white;
 }
 
 .time-list {
@@ -42,4 +39,19 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 650px;
+}
+
+.scramble-button, .reset-button {
+    border: 1px outset #ffffff;
+    background-color: #000000;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-family: noto_mono, ui-monospace;
+    color: white;
+}
+
+.scramble-button:hover, .reset-button:hover {
+    background-color: #c4c4d5;
+    color: #000000;
 }

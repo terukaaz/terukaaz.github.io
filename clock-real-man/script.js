@@ -4,14 +4,30 @@ addEventListener("DOMContentLoaded", (event) => {
         setInterval(() => { // update
             update();
         }, 1);
+
+        var scrambleButton = document.getElementById("scramble-button")
+        scrambleButton.addEventListener('click', function(){
+            simulScramble = !simulScramble;
+            simulScramble ? scrambleButton.innerHTML = "S" : scrambleButton.innerHTML = "NS";
+        });
+
+        var resetButton = document.getElementById("reset-button")
+        resetButton.addEventListener('click', function(){
+            resetTimer();
+        });
+
+        addEventListener("keydown", (event) => {
+            onKey(event);
+        });
+
+        document.getElementById("main").addEventListener("click", (event) => {
+            onKey(new KeyboardEvent('keydown', { keyCode: 32 }))
+        });
     }
 
     init();
 });
 
-addEventListener("keydown", (event) => {
-    onKey(event);
-});
 
 let timerState = 0;
 
@@ -23,6 +39,8 @@ let solveIndex = 0;
 
 let times = [];
 let currentSolveTimeStarted = 0;
+
+let simulScramble = false;
 
 
 function onKey(event) {
@@ -44,7 +62,7 @@ function onKey(event) {
                 currentSolveTimeStarted = Date.now();
 
                 document.getElementsByClassName("scramble")[0].style.textAlign = "left";
-                document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(true);
+                document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(simulScramble);
             }
 
             solveIndex++;
@@ -62,7 +80,7 @@ function onKey(event) {
             currentSolveTimeStarted = Date.now();
 
             document.getElementsByClassName("scramble")[0].style.textAlign = "left";
-            document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(true);
+            document.getElementsByClassName("scramble")[0].innerHTML = randomScramble(simulScramble);
         }
 
     } else if (event.keyCode === 82) {
@@ -78,7 +96,7 @@ function resetTimer() {
     times = [];
 
     document.getElementsByClassName("scramble")[0].style.textAlign = "center";
-    document.getElementsByClassName("scramble")[0].innerHTML = "Hi there! press space to start.";
+    document.getElementsByClassName("scramble")[0].innerHTML = "Hi there! press space or click to start.";
     document.getElementsByClassName("time-list")[0].innerHTML = null;
 }
 
